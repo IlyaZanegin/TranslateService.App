@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  padding: 0 20px 0 15px;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  overflow-y: hidden;
+  //  margin-left: 14px;
+  z-index: 10;
+}
+
+::ng-deep split {
+  flex: 1;
+}

@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  padding: 0 20px 0 15px;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+::ng-deep split {
+  flex: 1;
+}

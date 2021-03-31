@@ -1,0 +1,10 @@
+$header-height: 40px;
+$footer-height: 40px;
+
+#content-wrapper {
+  position: relative;
+  height: calc(100% - #{$header-height} - #{$footer-height} - 20px);
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
