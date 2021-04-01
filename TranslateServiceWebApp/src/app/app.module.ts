@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent, NotificationComponent } from '@components';
 import { ShellModule, AppRoutingModule } from '@modules';
+import { HttpClientModule } from '@angular/common/http';
+import { URL_CONFIG } from '@config/url';
+import { UrlConfig } from 'environments/environment';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,12 @@ import { ShellModule, AppRoutingModule } from '@modules';
   imports: [
     BrowserModule,
     ShellModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: URL_CONFIG, useValue: UrlConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

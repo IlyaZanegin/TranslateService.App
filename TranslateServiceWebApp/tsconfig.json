@@ -30,6 +30,9 @@
       ],
       "@pages": [
         "app/pages"
+      ],
+      "@config/url": [
+        "app/url.config"
       ]
     }
   },
