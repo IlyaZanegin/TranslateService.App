@@ -17,7 +17,7 @@ export class TranslateService extends HandleService  {
   //Токен живет не более 12 часов
   //Это Yandex Cloud
   private readonly folderId = 'b1gro9mj3edpr88556ul';
-  private readonly iamToken = 't1.9euelZqOjJ2RjYyQmY7Pj8-dmJGSie3rnpWaxpORkZaNns3PkJ3Nj46Zlcvl9PcScmh8-e8nOQqP3fT3UiBmfPnvJzkKjw.9mEGjzcXIZoA2cjX7tjD12SMhJ8TwTK-XF9AlI4ppQt-RzEZu7JTaodji_B_Ta83VoWwWp7DH0LuzcP2jBQaDw'
+  private readonly iamToken = 't1.9euelZqNycaJmsjHjY7HiYyXy5bLl-3rnpWaxpORkZaNns3PkJ3Nj46Zlcvl8_cHUWR8-e8fP3xk_t3z90d_YXz57x8_fGT-.5V6SNaCxWUV3DKLGFJUpD7FPMSXKneaau-LSkIf5nYPfkg3CR4VqMDotqUTGo9q8L40ZiWOqAetoTZ2VcEPHDQ';
 
   constructor(
     private readonly httpClient: HttpClient,
@@ -39,7 +39,7 @@ export class TranslateService extends HandleService  {
       let languages = response["languages"];
 
       return languages.map(function (language: ILanguage) {
-        return { code: language.code, age: language.name };
+        return { code: language.code, name: language.name };
       });
     }), catchError(this.errorHandle));
   }

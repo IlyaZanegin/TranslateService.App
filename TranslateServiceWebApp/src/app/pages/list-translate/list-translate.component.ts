@@ -8,8 +8,7 @@ import { TranslateService } from '@services';
 })
 export class ListTranslateComponent implements OnInit {
   constructor(
-    private readonly translateService: TranslateService
-  ) { }
+    private readonly translateService: TranslateService) { }
 
   ngOnInit(): void {
     

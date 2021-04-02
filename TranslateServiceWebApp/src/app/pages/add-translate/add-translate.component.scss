@@ -1,11 +1,12 @@
 :host {
   display: flex;
-  padding: 0 20px 0 15px;
+  padding-top: 0px;
   height: 100%;
   width: 100%;
   flex-direction: column;
+  align-items: center;
 }
 
-::ng-deep split {
-  flex: 1;
+form{
+    width: 800px;
 }

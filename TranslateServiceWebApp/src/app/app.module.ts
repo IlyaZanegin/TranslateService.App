@@ -5,16 +5,20 @@ import { ShellModule, AppRoutingModule } from '@modules';
 import { HttpClientModule } from '@angular/common/http';
 import { URL_CONFIG } from '@config/url';
 import { UrlConfig } from 'environments/environment';
+import { AddTranslateComponent, ListTranslateComponent } from '@pages';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent, NotificationComponent
+    AppComponent, NotificationComponent, AddTranslateComponent, ListTranslateComponent
   ],
   imports: [
     BrowserModule,
     ShellModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: URL_CONFIG, useValue: UrlConfig }

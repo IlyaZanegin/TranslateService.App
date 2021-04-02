@@ -1,1 +1,32 @@
-<p>add</p>
+<form [formGroup]="form" class="text-center border border-light p-5">
+  <p class="h4 mb-4">Add translate</p>
+
+  <div class="row form-group">
+    <label for="source-lang" class="col-sm-2 col-form-label col-form-label-sm">Source</label>
+
+    <select formControlName="sourceLangs" id="source-lang" class="form-control col-sm-4">
+      <option *ngFor="let language of languages; let i = index" [value]="language.code">
+        {{language.name}}
+      </option>
+    </select>
+
+    <input type="text" placeholder="Source text" class="form-control col-sm-6" formControlName="sorceText">
+  </div>
+
+  <div class="row">
+    <label for="target-lang" class="col-sm-2 col-form-label col-form-label-sm">Target</label>
+
+    <select formControlName="targetLangs" id="target-lang" class="form-control col-sm-4">
+      <option *ngFor="let language of languages; let i = index" [value]="language.code">
+        {{language.name}}
+      </option>
+    </select>
+
+    <input type="text" placeholder="Target text" class="form-control col-sm-6" formControlName="targetText">
+  </div>
+
+  <div class="row justify-content-center p-3">
+    <button type="button" class="btn btn-primary mr-1" (click)="translate()">Translate</button>
+    <button type="button" class="btn btn-secondary mr-1" (click)="save()">Save</button>
+  </div>
+</form>
