@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { ILanguage } from '@models';
+import { Observable } from 'rxjs';
+import { ILanguage, ITranslateResponse, ITranslateRequest } from '@models';
 import { URL_CONFIG, IUrlConfig } from '@config/url';
 import { HandleService } from '../handle/handle.service';
 import { catchError, map } from 'rxjs/operators';
@@ -10,14 +10,13 @@ import { catchError, map } from 'rxjs/operators';
 export class TranslateService extends HandleService  {
   private readonly baseUrl: string;
   private readonly headers: any;
-  private readonly body: any;
 
   //folderId и iamToken - это секретная информация, она не должна быть здесь
   //Нужно использовать API, тогда мы сможем вызвать powershell scipt на сервере, который вернет нам токен 
   //Токен живет не более 12 часов
   //Это Yandex Cloud
   private readonly folderId = 'b1gro9mj3edpr88556ul';
-  private readonly iamToken = 't1.9euelZqNycaJmsjHjY7HiYyXy5bLl-3rnpWaxpORkZaNns3PkJ3Nj46Zlcvl8_cHUWR8-e8fP3xk_t3z90d_YXz57x8_fGT-.5V6SNaCxWUV3DKLGFJUpD7FPMSXKneaau-LSkIf5nYPfkg3CR4VqMDotqUTGo9q8L40ZiWOqAetoTZ2VcEPHDQ';
+  private readonly iamToken = 't1.9euelZrIkpKJkJ3Px8_NkpaakJuczu3rnpWaxpORkZaNns3PkJ3Nj46Zlcvl8_c8A1p8-e8fSG8X_d3z93wxV3z57x9Ibxf9.viA2IYTjtdQTwGMV7pq8R8CYEhrxG-_1tSmqV-8ap3LxDfvgUrdO6NSLsoqUsXlJsPdl-i8URt5A8YqVsbfxCg';
 
   constructor(
     private readonly httpClient: HttpClient,
@@ -28,18 +27,39 @@ export class TranslateService extends HandleService  {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.iamToken}`
       })
-    };
-    this.body = {
-      folderId: this.folderId
-    };
+    };   
   }
 
   getLanguageList(): Observable<ILanguage[]> {
-    return this.httpClient.post(`${this.baseUrl}languages`, this.body, this.headers).pipe(map(response => {
-      let languages = response["languages"];
+    const body = {
+      folderId: this.folderId
+    };
+
+    return this.httpClient.post(`${this.baseUrl}languages`, body, this.headers).pipe(map(response => {
+      const languages = response["languages"];
 
       return languages.map(function (language: ILanguage) {
-        return { code: language.code, name: language.name };
+         return { code: language.code, name: language.name };
+      }).filter(x => x.name != null);
+    }), catchError(this.errorHandle));
+  }
+
+  translate(sourceLang: ILanguage, targetLang: ILanguage, sourceText: string): Observable<ITranslateResponse[]> {
+    const body: ITranslateRequest = {
+      sourceLanguageCode: sourceLang.code,
+      targetLanguageCode: targetLang.code,
+      format: 'PLAIN_TEXT',
+      texts: sourceText.split('\n').map(x => x.trim()),
+      folderId: this.folderId,
+      model: null,
+      glossaryConfig: null
+    };
+
+    return this.httpClient.post(`${this.baseUrl}translate`, body, this.headers).pipe(map(response => {
+      const translations = response["translations"];
+
+      return translations.map(function (translate: ITranslateResponse) {
+        return { text: translate.text };
       });
     }), catchError(this.errorHandle));
   }

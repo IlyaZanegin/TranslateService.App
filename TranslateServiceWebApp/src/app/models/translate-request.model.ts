@@ -1,4 +1,4 @@
-export interface ITranslate {
+export interface ITranslateRequest {
   sourceLanguageCode: string;
   targetLanguageCode: string;
   format: string;
@@ -18,3 +18,4 @@ export interface IGlossaryPair {
   sourceText: string;
   translatedText: string;
 }
+

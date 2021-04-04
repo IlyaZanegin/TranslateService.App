@@ -10,7 +10,7 @@
       </option>
     </select>
 
-    <input type="text" placeholder="Source text" class="form-control col-sm-6" formControlName="sorceText">
+    <textarea placeholder="Source text" class="form-control col-sm-6" formControlName="sorceText"></textarea>
   </div>
 
   <div class="row">
@@ -22,11 +22,11 @@
       </option>
     </select>
 
-    <input type="text" placeholder="Target text" class="form-control col-sm-6" formControlName="targetText">
+    <textarea placeholder="Target text" class="form-control col-sm-6" formControlName="targetText"></textarea>
   </div>
 
   <div class="row justify-content-center p-3">
-    <button type="button" class="btn btn-primary mr-1" (click)="translate()">Translate</button>
-    <button type="button" class="btn btn-secondary mr-1" (click)="save()">Save</button>
+    <button type="button" class="btn btn-primary mr-1" (click)="translate()" [disabled]="!canTranslate()">Translate</button>
+    <button type="button" class="btn btn-secondary mr-1" (click)="save()" [disabled]="!canSave()">Save</button>
   </div>
 </form>
