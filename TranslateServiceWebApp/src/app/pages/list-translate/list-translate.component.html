@@ -1,1 +1,20 @@
-<p>list</p>
+<div class="containter">
+  <div class="row">
+    <table>
+
+      <tr>
+        <th>Translate</th>
+        <th>Source text</th>
+        <th>Result text</th>
+      </tr>
+
+      <tr *ngFor="let element of elements">
+        <td>{{element.sourceCode}} -> {{element.targetCode}}</td>
+        <td><pre>{{element.sourceText}}</pre></td>
+        <td><pre>{{element.targetText}}</pre></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+

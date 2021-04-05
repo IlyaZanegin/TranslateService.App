@@ -62,7 +62,7 @@ export class AddTranslateComponent implements OnInit {
       targetText: this.getTargetText()
     };
 
-    this.storageBrowserService.Create(elementStorage);
+    this.storageBrowserService.create(elementStorage);
   }
 
   canTranslate(): boolean {

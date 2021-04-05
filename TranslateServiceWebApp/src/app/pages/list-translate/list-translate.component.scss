@@ -5,10 +5,24 @@
   width: 100%;
   flex-direction: column;
   overflow-y: hidden;
-  //  margin-left: 14px;
   z-index: 10;
+  align-items: center;
 }
 
 ::ng-deep split {
   flex: 1;
+}
+
+table {
+  margin: 8px;
+  border: 1px solid gray;
+
+  td, th {
+    border: 1px solid gray;
+    padding: 4px;
+  }
+
+  th {
+    text-align: center;
+  }
 }

@@ -4,5 +4,6 @@ import { IElementStorage } from '@models';
 @Injectable({ providedIn: 'root' })
 export abstract class StorageService {
   constructor() { }
-  abstract Create(element: IElementStorage);
+  abstract create(element: IElementStorage);
+  abstract getAll(): IElementStorage[];
 }

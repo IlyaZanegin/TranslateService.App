@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@services';
+import { StorageBrowserService } from '@services';
+import { IElementStorage } from '@models';
 
 @Component({
   selector: 'app-list-translate',
@@ -7,15 +8,14 @@ import { TranslateService } from '@services';
   styleUrls: ['./list-translate.component.scss']
 })
 export class ListTranslateComponent implements OnInit {
+  elements: IElementStorage[] = [];
+
   constructor(
-    private readonly translateService: TranslateService) { }
+    private readonly storageBrowserService: StorageBrowserService) {
+
+  }
 
   ngOnInit(): void {
-    
-    this.translateService.getLanguageList().subscribe(
-      response => {
-      },
-      error => {
-      });
+    this.elements = this.storageBrowserService.getAll();
   }
 }
