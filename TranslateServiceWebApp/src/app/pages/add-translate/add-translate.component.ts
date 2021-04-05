@@ -35,7 +35,7 @@ export class AddTranslateComponent implements OnInit {
         this.languages = response;
       },
       error => {
-        
+        //display error here
       });
   }
 
@@ -48,7 +48,7 @@ export class AddTranslateComponent implements OnInit {
         this.setTargetText(response);
       },
       error => {
-        
+        //display error here
       });
   }
 
@@ -63,6 +63,8 @@ export class AddTranslateComponent implements OnInit {
     };
 
     this.storageBrowserService.create(elementStorage);
+
+    //show succeful result here
   }
 
   canTranslate(): boolean {
