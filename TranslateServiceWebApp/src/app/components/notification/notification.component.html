@@ -1,1 +1,25 @@
+<div class="notification" *ngFor="let notification of notificationService.notifications; trackBy: trackFn"
+     [class.fade-out]="notification['isClosing']"
+     [ngClass]="{
+        'border-success': notification.type === 'success',
+        'border-error': notification.type === 'error',
+        'color-success': notification.type === 'success',
+        'color-error': notification.type === 'error'
+      }">
 
+  <em class="icon"
+      [ngClass]="{
+       'fas': notification.type === 'error',
+       'fa-exclamation-triangle': notification.type === 'error',
+       'far': notification.type === 'success',
+       'fa-check-circle': notification.type === 'success'
+     }">
+  </em>
+
+  <pre class="message">{{notification.message}}
+
+  <em class="description">{{notification.description}}</em>
+  </pre>
+
+  <em class="close-notification fas fa-times" (click)="notificationService.close(notification)"></em>
+</div>

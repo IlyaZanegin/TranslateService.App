@@ -5,3 +5,7 @@
   position: relative;
   overflow: hidden;
 }
+
+app-notification {
+  z-index: 10000;
+}

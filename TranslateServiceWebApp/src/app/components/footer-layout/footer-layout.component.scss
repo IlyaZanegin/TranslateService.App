@@ -1,8 +1,11 @@
+@import '~assets/sass/colors';
+
 :host {
   height: 40px;
 }
 
 div {
-  background-color: lightgray;
+  background-color: $footer-color;
   height: 40px;
+  color: white;
 }

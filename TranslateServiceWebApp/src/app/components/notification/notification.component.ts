@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NotificationService } from '@services';
+import { INotification } from '@models';
 
 @Component({
   selector: 'app-notification',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent {
-  constructor() { }
+  constructor(
+    public notificationService: NotificationService
+  ) { }
+
+  trackFn(index, notification: INotification) {
+    return notification.id;
+  }
 }

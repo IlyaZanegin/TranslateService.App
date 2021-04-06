@@ -1,10 +1,12 @@
+@import '~assets/sass/colors';
+
 :host {
   height: 40px;
 }
 
 div {
   height: 40px;
-  background-color: aqua;
+  background-color: $header-color;
 }
 
 div > nav {
@@ -13,4 +15,5 @@ div > nav {
 
 a {
   margin-right: 8px;
+  color: white;
 }

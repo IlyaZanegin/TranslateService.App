@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService, StorageBrowserService } from '@services';
+import { TranslateService, StorageBrowserService, NotificationService } from '@services';
 import { ILanguage, ITranslateResponse, IElementStorage } from '@models';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Guid } from 'guid-typescript';
@@ -20,6 +20,7 @@ export class AddTranslateComponent implements OnInit {
   constructor(
     private readonly translateService: TranslateService,
     private readonly storageBrowserService: StorageBrowserService,
+    private readonly notificationService: NotificationService,
     private readonly formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       sourceLangs: [''],
@@ -35,7 +36,7 @@ export class AddTranslateComponent implements OnInit {
         this.languages = response;
       },
       error => {
-        //display error here
+        this.notificationService.error(error.message);
       });
   }
 
@@ -46,9 +47,10 @@ export class AddTranslateComponent implements OnInit {
     this.translateService.translate(sourceLang, targetLang, this.getSourceText()).subscribe(
       response => {
         this.setTargetText(response);
+        this.notificationService.success('Text was translated');
       },
       error => {
-        //display error here
+        this.notificationService.error(error.message);
       });
   }
 
@@ -64,7 +66,7 @@ export class AddTranslateComponent implements OnInit {
 
     this.storageBrowserService.create(elementStorage);
 
-    //show succeful result here
+    this.notificationService.success('Added new translate in localStorage');
   }
 
   canTranslate(): boolean {

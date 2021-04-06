@@ -16,6 +16,6 @@ export class ListTranslateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.elements = this.storageBrowserService.getAll();
+    this.elements = this.storageBrowserService.getAll().sort((a, b) => a.recordDate < b.recordDate ? 1 : -1);
   }
 }
