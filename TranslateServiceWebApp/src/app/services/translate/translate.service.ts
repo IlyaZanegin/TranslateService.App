@@ -16,7 +16,7 @@ export class TranslateService extends HandleService  {
   //Токен живет не более 12 часов
   //Это Yandex Cloud
   private readonly folderId = 'b1gro9mj3edpr88556ul';
-  private readonly iamToken = 't1.9euelZqazMaKyYuZi5eJz8rLyZzJlu3rnpWaxpORkZaNns3PkJ3Nj46Zlcvl9PdXQUV8-e9PPRGU3fT3F3BCfPnvTz0RlA.hmdEeL5oHQlsoJyb2tAZ-jKA18EkreufhAXeXQdwRLW_6QaVutJxZ4DcCM7_7cfvgNdGcUABLDJ_s_hUn8-xDg';
+  private readonly iamToken = 't1.9euelZrOmJiWkZ2Vls6cjo6NnoyVjO3rnpWaxpORkZaNns3PkJ3Nj46Zlcvl8_cyLUB8-e9PciFw_d3z93JbPXz5709yIXD9.wUd-89rWCZYa62kSaf_OXU-Wm8z2WJOQMXHw0JEFw6eGeUZq4wa0WowzFAlQTydplegENsjgDdNRZFSXLfMJAA';
 
   constructor(
     private readonly httpClient: HttpClient,
